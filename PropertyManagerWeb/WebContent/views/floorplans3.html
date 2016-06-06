@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="HuntsboroApp">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Huntsboro Properties</title>
+
+<!-- core CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href="../css/font-awesome.min.css" rel="stylesheet">
+<link href="../css/prettyPhoto.css" rel="stylesheet">
+<link href="../css/animate.min.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/responsive.css" rel="stylesheet">
+<link href="../css/app.css" rel="stylesheet">
+<link rel="stylesheet" href="https://rawgit.com/esvit/ng-table/master/dist/ng-table.min.css">
+
+<body>
+	<script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script src="//code.angularjs.org/1.4.9/angular-route.js"></script>
+	<script src="//code.angularjs.org/1.4.9/angular-cookies.js"></script>
+ 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-messages.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-sanitize.js"></script>
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script> -->
+    <script src="https://rawgit.com/esvit/ng-table/master/dist/ng-table.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js"></script>
+
+	
+	<script src="../js/ui-bootstrap-tpls-1.1.1.min.js"></script>
+	<script src="../app/app.js"></script>
+	<!-- <script src="../app/controllers/header.js"></script> -->
+	<script src="../app/controllers/floorplans.js"></script>
+
+	
+	<div ng-include="'header.html'"></div>				
+	<div class="container-fluid">
+	 <div class="row">
+		 <div class="container">
+		 		<div ng-view></div>
+		 </div>
+	 </div>
+	</div>
+  	<div ng-include="'footer.html'"></div>	
+</body>
+</html>

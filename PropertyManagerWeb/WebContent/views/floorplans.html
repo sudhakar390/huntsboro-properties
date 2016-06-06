@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="HuntsboroApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Huntsboro Properties</title>
+    
+    <!-- core CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prettyPhoto.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/responsive.css" rel="stylesheet">
+    <link href="../css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://rawgit.com/esvit/ng-table/master/dist/ng-table.min.css">
+	
+	<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script> -->
+	
+<!-- 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-aria.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-messages.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-sanitize.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
+    <script src="https://rawgit.com/esvit/ng-table/master/dist/ng-table.min.js"></script>
+    
+    <script src="../js/ui-bootstrap-tpls-1.1.1.min.js"></script> -->
+    <!-- <script src="../app/controllers/floorplans.js"></script> -->
+    
+	<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="../images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../images/ico/apple-touch-icon-57-precomposed.png">
+    <style>
+	img {
+	  cursor: -webkit-zoom-in; 
+	  cursor: -moz-zoom-in;
+	}
+	.top-buffer { margin-top:20px; }
+	</style>
+</head><!--/head-->
+
+<body>
+	<script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-aria.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-messages.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-sanitize.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
+    <script src="https://rawgit.com/esvit/ng-table/master/dist/ng-table.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js"></script>
+    
+    <script src="../js/ui-bootstrap-tpls-1.1.1.min.js"></script>
+	<script src="../app/app.js"></script>
+	<script src="../app/services/auth.service.js"></script>
+	<script src="../app/services/user.service.js"></script> 
+	<script src="../app/services/broadcastmessages.service.js"></script>
+	<script src="../app/controllers/floorplans.js"></script>
+	<script src="../app/controllers/login.js"></script>
+	<script src="../app/controllers/maintenance.js"></script>
+	<script src="../app/controllers/register.js"></script>
+	<script src="../app/controllers/residenthome.js"></script>
+	<script src="../app/controllers/broadcastmessages.js"></script>
+	<script src="../app/controllers/contactus.js"></script>
+	
+	
+	<div ng-include="'header.html'"></div>
+
+    <div class="container">
+     <div ng-controller="FloorplansearchCtrl">
+	  <div class="col-lg-8 col-md-offset-3">
+	   	<!-- <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre> -->
+		    <h2>Find a Floor Plan</h2>
+		    <form name="searchFloorForm" ng-submit="findFloorPlan()" >
+		     	 <div class="form-group col-lg-4" ng-class="{ 'has-error': searchFloorForm.dt.$dirty && searchFloorForm.dt.$error.required }">
+		            <label for="dt">Move-in Date *</label>
+			              <input type="text" name="moveInDate" id="moveInDate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"  ng-required="true" close-text="Close" alt-input-formats="altInputFormats" required/>
+			              <span class="input-group-btn">
+			                <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+			              </span>
+		            <span ng-show="searchFloorForm.dt.$dirty && searchFloorForm.dt.$error.required" class="help-block">Move-in Date is required</span>
+		        </div>
+		        <div class="form-group  col-lg-4" >
+		            <label for="bedrooms">No. of Bedrooms</label>
+		            	<select name="bedroom" id="beds" ng-model="bedsize" class="form-control" ng-options = "b.name for b in bedsizes">
+					     <!--  <option value="-1">Any</option> 
+					       <option value="1">1</option>
+					       <option value="2">2</option>
+					       <option value="3">3</option> -->
+					    </select>
+<!-- 					   <select name="bedroom" id="beds" ng-model="bedsize" class="form-control" ng-init="bedsize = -1" >
+					      <option value="-1">Any</option> 
+					       <option value="1">1</option>
+					       <option value="2">2</option>
+					       <option value="3">3</option>
+					    </select> -->
+					    <br>
+		        </div>
+		        <div class="form-group  col-lg-4" >
+		            <label for="bathrooms">No. of Bathrooms</label>
+		             <select name="bathroom" id="baths" ng-model="bathsize" class="form-control" ng-options = "b.name for b in bathsizes">
+					      <option value="-1">Any</option> 
+					       <option value="1">1</option>
+					       <option value="2">2</option>
+					       <option value="3">3</option>
+					    </select>
+					  <!--  <select name="bathroom" id="baths" ng-model="bathsize" class="form-control" >
+					      <option value="-1">Any</option> 
+					       <option value="1">1</option>
+					       <option value="2">2</option>
+					       <option value="3">3</option>
+					    </select> --><br>
+		        </div>
+		        <div class="form-actions">
+		            <button type="submit" ng-disabled="searchFloorForm.$invalid || dataLoading" class="btn btn-primary">Search</button>
+		            <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+		        </div>
+		    </form>
+		    <div class="alert alert-success top-buffer" ng-show="showSuccessAlert">
+				   <strong>{{statusMsg}}</strong> 
+			</div>
+			<div class="alert alert-danger top-buffer " ng-show="showFailureAlert">
+				   <strong>{{errorMsg}}</strong> 
+			</div>
+		</div>
+		
+		<div ng-if="hasAvailableProperties" class="col-md-10 col-md-offset-2 top-buffer ">
+		 <table ng-table="searchResultsTable" class="table table-bordered table-striped table-condensed">
+	       <tr ng-repeat="result in data">
+	       <!--  <td data-title="'Floor Layout'" ><a href="" ng-click="zoomImage(result.photo)">    	
+	         <img src="{{result.photo}}" class="img-responsive img-thumbnail" width="150" height="150"/></a></td>
+	        --> <td data-title="'Property Name'" >{{result.propertyName}}</td>
+	        <td data-title="'Location'" >{{result.street}}, {{result.city}} {{result.state}} {{result.zip}} </td>
+	        <td data-title="'Unit'" >{{result.unitNumber}}</td>
+	        <td data-title="'Beds'" >{{result.rooms}}</td>
+	        <td data-title="'Baths'" >{{result.bathroom}}</td>
+	        <td data-title="'Rent'" >{{result.rentalAmount}}</td>
+	        <td data-title="'Deposit'" >{{result.depositAmount}}</td>
+	        <!-- <td data-title="'Sq.Ft.'" >{{result.size}}</td> -->
+	        <td data-title="''" ><a href="" ng-click="viewDetails(result.id)">View Details</a></td>
+	        <td data-title="''" >
+	        <FORM method="post" action="https://www.bluemoonforms.com/rentalapp/index.php">
+			    <INPUT type="hidden" name="IMPORTXML" value="
+			        <BLUEMOON>
+			            <LOGIN>
+			                <SERIAL-NUMBER>TX16021150</SERIAL-NUMBER>
+			            </LOGIN>
+			            <RENTALAPP>
+			                <SETTINGS>
+			                    <TO-EMAIL>mgr@huntsboro-properties.com</TO-EMAIL>
+			                    <RECEIPT-REDIRECT-URL>https://www.huntsboro-properties.com/views/thankyou.html/</RECEIPT-REDIRECT-URL>
+			                </SETTINGS>
+			            </RENTALAPP>
+			        </BLUEMOON>
+			    ">
+	    		<INPUT name="LAUNCHRENTALAPP" type="submit" class="btn btn-primary" value="Launch Rental Application">
+		</FORM>
+	        
+	        </td>
+	       </tr>
+	      </table>
+		</div>
+	  
+	  
+	  	<div id="fp-view-details" ng-if="detail" class="col-md-8 col-md-offset-2 top-buffer ">
+            <div class="text-center">
+            	<div>
+            		<img src="../images/281southLogo.jpg" class="img-responsive img-thumbnail" width="150" height="150"/>
+            	     <h2>{{detail.propertyName}}</h2>
+            	</div>
+            	
+                <div class="row top-buffer">
+                 <div class="col-sm-6">
+                         <a href="" ng-click="zoomImage(detail.photo)"><img src="{{detail.photo}}" class="img-responsive img-thumbnail" width="304" height="236"/></a>
+                   </div>
+                    <div class="col-sm-6">
+                            <div>
+                               <table class="table">
+	                    		<tbody>
+	                    			<tr>
+	                    				<td><strong>Bed</strong>
+	                    				<td>{{detail.rooms}}</td>
+	                    			</tr>
+	                    			<tr>
+	                    				<td><strong>Baths</strong>
+	                    				<td>{{detail.bathroom}}</td>
+	                    			</tr>
+	                    			<tr>
+	                    				<td><strong>Sq.Ft</strong>
+	                    				<td>{{detail.size}}</td>
+	                    			</tr>
+	                    			<tr>
+	                    				<td><strong>Features</strong>
+	                    				<td>
+	                    					<ul ng-bind-html="detail.features"></ul>
+	                    				</td>
+	                    			</tr>
+	                    			<tr>
+	                    				<td><strong>Location</strong>
+	                    				<td>
+	                    					{{detail.street}} , {{detail.city}}  {{detail.zip}}  {{detail.country}}  
+	                    				</td>
+	                    			</tr>
+
+	                    		</tbody>
+	                    	</table>
+
+                            </div>
+                           
+                    </div>
+
+                </div>
+            </div><!--/details area-->
+        </div>
+        
+     <!--  <modal title="Zoom Image" visible="showModal"> -->
+        <!-- <div>
+	      	<img src="{{detail.photo}}" ng-init="zoomWidth = 100;imgStyle = {width:'100px'}" ng-style="imgStyle" 
+			ng-mouse-wheel-up="zoomWidth = zoomWidth + 20; imgStyle.width = zoomWidth +'px'; "  
+			ng-mouse-wheel-down="zoomWidth = zoomWidth - 20;imgStyle.width = zoomWidth  +'px'; "/>
+		</div> -->
+	  <!-- </modal> -->
+        
+	  </div> <!--/controller-->
+	</div><!--/Floor plans-page-->
+
+	<div ng-include="'footer.html'" class="top-buffer"></div>
+	
+    
+</body>
+</html>

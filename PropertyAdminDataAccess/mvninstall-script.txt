@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=HikariCP-2.4.3.jar -DgroupId=com.zaxxer -DartifactId=HikariCP -Dversion=2.4.3 -Dpackaging=jar

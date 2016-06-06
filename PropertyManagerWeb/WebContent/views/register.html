@@ -1,0 +1,81 @@
+
+    <h2>Register</h2>
+    <form name="form" ng-submit="vm.register()" role="form" >
+    
+    	<div class="form-group col-lg-6">
+			<label for="property">Property Name*:</label>
+			<div>
+			<span> 
+				<select name="propertyId"  id="property" ng-model="vm.user.selectedPropertyId" 
+					ng-options="prop.id as prop.propertyName for prop in vm.user.propertyList"
+					class="form-control" required>
+					<option value=""></option>
+				</select>
+			</span>
+			<span ng-show="form.propertyId.$dirty && form.propertyId.$error.required" class="help-block">Property Name is required</span>
+		  </div>
+		</div>
+		<div class="form-group col-lg-6">
+			<label for="unit">Apartment Number*:</label>
+			<div>
+				<span>
+					<select name="apartmentNum" ng-disabled="!vm.user.unitsList" id="unit"
+						ng-model="vm.user.apartmentNum" 
+						ng-options="unit.unitNumber as unit.unitNumber for unit in vm.user.unitsList"
+						class="form-control"  required>
+						<option value=""></option>
+					</select>
+				</span>
+				<span ng-show="form.apartmentNum.$dirty && form.apartmentNum.$error.required" class="help-block">Apartment Number is required</span>
+			</div>
+		</div>
+    	
+        <div class="form-group col-lg-6" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" id="firstName" class="form-control" ng-model="vm.user.firstName" required />
+            <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
+        </div>
+
+        <div class="form-group col-lg-6" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" id="Text1" class="form-control" ng-model="vm.user.lastName" required />
+            <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span>
+        </div>
+       
+        <div class="form-group col-lg-6">
+            <label for="cellPhone">Cell Phone number</label>
+            <input type="text" name="lastName" id="cellPhone" class="form-control" ng-model="vm.user.cellPhone"/>
+        </div>
+        
+        <div class="form-group col-lg-6">
+            <label for="workPhone">Work Phone number</label>
+            <input type="text" name="lastName" id="workPhone" class="form-control" ng-model="vm.user.workPhone"/>
+        </div>
+ 		
+ 		<div class="form-group col-lg-6" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
+            <label for="email">Username/E-mail*</label>
+            <input type="text" name="email" id="email" class="form-control" ng-model="vm.user.email" required />
+            <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">E-mail is required</span>
+        </div>
+        
+        <div class="form-group col-lg-6" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <label for="password">Password *</label>
+            <input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" ng-maxlength="8" required />
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </div>
+
+        <div class="form-group col-lg-6" ng-class="{ 'has-error': form.registrationcode.$dirty && form.registrationcode.$error.required }">
+            <label for="registrationcode">Registration Code *</label>
+            <input type="text" name="registrationcode" id="registrationcode" class="form-control" ng-model="vm.user.registrationcode" ng-maxlength="8" required />
+            <span ng-show="form.registrationcode.$dirty && form.registrationcode.$error.required" class="help-block">Registration Code is required</span>
+        </div>
+        <div class="form-group col-lg-6" >
+        </div>
+
+
+        <div class="form-actions col-lg-6">
+            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Register</button>
+            <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a href="#/login" class="btn btn-link">Cancel</a>
+        </div>
+    </form>

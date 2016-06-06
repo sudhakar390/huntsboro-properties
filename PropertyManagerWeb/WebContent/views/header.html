@@ -1,0 +1,92 @@
+<!--  	<script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script src="//code.angularjs.org/1.4.9/angular-route.js"></script>
+	<script src="//code.angularjs.org/1.4.9/angular-cookies.js"></script> -->
+
+<!-- 	<script src="../js/ui-bootstrap-tpls-1.1.1.min.js"></script>
+	<script src="../app/app.js"></script>
+	<script src="../app/services/auth.service.js"></script>
+	<script src="../app/services/user.service.js"></script>
+	<script src="../app/services/broadcastmessages.service.js"></script>
+	<script src="../app/controllers/floorplans.js"></script> 	
+	<script src="../app/controllers/login.js"></script>
+	<script src="../app/controllers/maintenance.js"></script>
+	<script src="../app/controllers/register.js"></script>
+	<script src="../app/controllers/residenthome.js"></script>
+	<script src="../app/controllers/broadcastmessages.js"></script> -->
+	
+	<!-- 	<script src="../js/ui-bootstrap-tpls-1.1.1.min.js"></script>
+	<script src="../app/app.js"></script>
+	<script src="../app/services/auth.service.js"></script>
+	<script src="../app/services/user.service.js"></script>
+	<script src="../app/services/broadcastmessages.service.js"></script>
+	<script src="../app/controllers/login.js"></script>
+	<script src="../app/controllers/maintenance.js"></script>
+	<script src="../app/controllers/register.js"></script>
+	<script src="../app/controllers/residenthome.js"></script>
+	<script src="../app/controllers/broadcastmessages.js"></script> -->
+
+ <header id="header" ng-controller='HeaderController'>
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-4">
+                        <div class="top-number"><p><i class="fa fa-phone-square"></i> 254-592-6925</p></div>
+                    </div>
+                    <div class="col-sm-6 col-xs-8">
+                       <div class="social">
+                            <ul class="social-share">
+                                <li><a href="https://m.facebook.com/281South/"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li> 
+                            </ul>
+                           <div class="search">
+								<form role="form" action="residentlogin.html">
+									 <button type="submit" class="btn btn-primary">Residents</button>
+								</form>
+							</div>
+                       </div>
+                    </div>
+                </div>
+            </div><!--/.container-->
+        </div><!--/.top-bar-->
+
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="../images/logo.jpg"  alt="logo"></a>
+                </div>
+                
+                <div class="collapse navbar-collapse navbar-right">
+                   <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">Home</a></li>
+						<li ><a href="features.html">Features</a></li>
+                        <li class="dropdown">
+                            <a href="floorplans.html" class="dropdown-toggle" data-toggle="dropdown">Find a Residence <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="floorplans.html">Floor Plans</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="photogallery.html">Photos</a></li>
+						 <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Residents <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                            	<li class="active"><a href="residentlogin.html">Login to Resident Portal</a></li>
+                                <li><a href="#/maintenance">Maintenance Request</a></li>
+								<li><a href="pricing.html">Resident Links</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#/aboutus">About Us</a></li>
+						<li><a href="#/contactus">Contact</a></li>
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+        
+    </header><!--/header-->

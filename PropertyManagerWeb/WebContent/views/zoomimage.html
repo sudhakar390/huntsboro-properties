@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="HuntsboroApp" ng-controller="ModalZoomController">
+<head>
+<script src="../app/controllers/floorplans.js"></script>
+<style>
+img {
+  cursor: -webkit-zoom-in; 
+  cursor: -moz-zoom-in;
+}
+</style>
+</head>
+<body>
+
+	<h2>Scroll your mouse to zoom in and zoom out. Click anywhere on the parent window to close this window.</h2>
+<div class="center">
+<img src="{{imagePath}}" ng-init="zoomWidth = 500;imgStyle = {width:'500px'}" ng-style="imgStyle" 
+ng-mouse-wheel-up="zoomWidth = zoomWidth + 20; imgStyle.width = zoomWidth +'px'; "  
+ng-mouse-wheel-down="zoomWidth = zoomWidth - 20;imgStyle.width = zoomWidth  +'px'; "/>
+</div>
+
+</body>
+</html>

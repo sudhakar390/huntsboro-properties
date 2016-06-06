@@ -1,0 +1,77 @@
+<h2>Welcome to Resident Portal.</h2>
+<div class="container" ng-controller="ResidentHomeController">
+
+<div id="msgArea" class="alert alert-info" ng-controller="BroadcastMessagesController" ng-show="messageText">
+	<strong>{{messageText}}</strong>
+</div>
+
+
+<div class="media" id="rentPaymentsWrap">
+<a href="#/payrent">
+	<div class="pull-left">
+		<img src="../images/money.png">
+	</div>
+</a>
+	<div class="media-body">
+		<h2 class="media-heading">
+			Make Payments
+		</h2>
+		<p>Pay online, check the status of your payments and review your payment history.</p>
+	</div>
+	
+</div>
+<a href="#/maintenance">
+<div class="media" id="maintReqWrap">
+	<div class="pull-left">
+		<img src="../images/resources.png">
+	</div>
+  </a>	
+	<div class="media-body">
+		<h2 class="media-heading">Maintenance Requests</h2>
+		<p>Submit online maintenance requests.</p>
+	</div>
+
+</div>
+<a href="javascript:alert('resident package');">
+<div class="media" id="newResPack">
+	<div class="pull-left">
+		<img src="../images/folder.jpg" class="img-responsive img-thumbnail" width="70" height="70" >
+	</div>
+  </a>	
+	<div class="media-body">
+		<h2 class="media-heading">New Resident Package</h2>
+		<p>View your New Resident Package.</p>
+	</div>
+</div>
+<div class="container" id="newResPack" style="margin-top:10px;">
+	<div class="row media">
+	  	 <div class="pull-left" style="{float:left;}" >
+		 	<img src="../images/linkimage.jpg" class="img-responsive img-thumbnail" width="70" height="70" />
+		 </div>
+
+		<div id="links" class="media-body" style="{float:left;}">
+			<p><h2>Check out some useful links :</h2></p>
+			<ul>
+				<li><a href="http://www.tarleton.edu/home/">Tarleton University</a></li>
+				<li><a href="http://www.exitrealtystephenville.com/">Exit Realty</a></li>
+				<li><a href="http://www.riverwalklaundry.com/">Riverwalk Laundry</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="container " id="newResPack" style="margin-top:20px;">
+	<div class="row">
+	  	 <div class="col-md-4" style="{float:left;}" >
+		 	<img src="../images/contact.png">
+		 </div>
+		 <div  class="col-md-8" style="{float:right;}" >
+			<h2 class="vcard">Reach your property manager</h2>
+		    <span style="display:block"><strong>Huntsboro Properties</strong></span>
+			<span style="display:block">PO Box 43</span>
+			<span style="display:block">Stephenville, TX 76401</span>
+			<span style="display:block"><a href="http://www.huntsboro-properties.com">www.huntsboro-properties.com</a></span>
+			<span style="display:block" class="glyphicon glyphicon-envelope"> <a href="mailto:info@huntsboro-properties.com"> Email</a></span>
+			<span style="display:block"  class="glyphicon glyphicon-earphone"> 254-592-6925</span>
+		</div>
+	</div>
+</div>
